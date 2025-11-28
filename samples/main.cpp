@@ -5,9 +5,14 @@
 #include <chrono>
 #include <clocale>
 
+#include "experiments.cpp"
+
 // Объявления функций из sortings.cpp
 void quickSort(int a[], int i, int j);
 void sortAVL(int* a, int n);
+
+// Объявление функции экспериментов
+void runExperiments();
 
 std::vector<int> readArrayFromFile(const std::string& filename) {
     std::vector<int> array;
@@ -54,8 +59,8 @@ bool isSorted(const std::vector<int>& arr) {
     return true;
 }
 
-int main() {
-    setlocale(LC_ALL, "RU");
+void runMainProgram() {
+    std::cout << "=== ЗАПУСК ОСНОВНОЙ ПРОГРАММЫ ===" << std::endl;
 
     // Читаем input.txt из основной папки проекта
     std::string inputPath = "../../input.txt";
@@ -64,7 +69,7 @@ int main() {
     if (inputArray.empty()) {
         std::cerr << "Ошибка: файл input.txt не найден по пути " << inputPath << std::endl;
         std::cerr << "Поместите файл input.txt в основную папку проекта" << std::endl;
-        return 1;
+        return;
     }
 
     std::cout << "Прочитано " << inputArray.size() << " чисел" << std::endl;
@@ -103,8 +108,8 @@ int main() {
     bool avlSortCorrect = isSorted(arrayForAVLSort);
 
     std::cout << "\nПроверка корректности:" << std::endl;
-    std::cout << "  QuickSort: " << (quickSortCorrect ? "✓ КОРРЕКТНА" : "✗ ОШИБКА") << std::endl;
-    std::cout << "  AVLTree: " << (avlSortCorrect ? "✓ КОРРЕКТНА" : "✗ ОШИБКА") << std::endl;
+    std::cout << "  QuickSort: " << (quickSortCorrect ? " КОРРЕКТНА" : " ОШИБКА") << std::endl;
+    std::cout << "  AVLTree: " << (avlSortCorrect ? " КОРРЕКТНА" : " ОШИБКА") << std::endl;
 
     // Сравнение производительности
     if (quickSortCorrect && avlSortCorrect) {
@@ -116,6 +121,38 @@ int main() {
             std::cout << "AVLTree сортировка быстрее в " << static_cast<double>(durationQuick.count()) / durationAVL.count() << " раз" << std::endl;
         }
     }
+}
+
+int main() {
+    setlocale(LC_ALL, "RU");
+
+    std::cout << "=== СРАВНЕНИЕ АЛГОРИТМОВ СОРТИРОВКИ ===" << std::endl;
+    std::cout << "Выберите режим работы:" << std::endl;
+    std::cout << "1 - Основная программа (сортировка данных из файла)" << std::endl;
+    std::cout << "2 - Эксперименты (сравнение алгоритмов на разных данных)" << std::endl;
+    std::cout << "Ваш выбор: ";
+
+    int choice;
+    std::cin >> choice;
+
+    switch (choice) {
+    case 1:
+        runMainProgram();
+        break;
+    case 2:
+        runExperiments();
+        break;
+    default:
+        std::cout << "Неверный выбор! Запускается основная программа..." << std::endl;
+        runMainProgram();
+        break;
+    }
+
+    std::cout << "\nПрограмма завершена. Нажмите Enter для выхода...";
+    std::cin.ignore();
+    std::cin.get();
 
     return 0;
 }
+
+
