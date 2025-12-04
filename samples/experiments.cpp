@@ -162,43 +162,6 @@ void experiment3_2() {
     }
 }
 
-// Анализ результатов и выводы
-void analyzeResults() {
-    std::cout << "=== АНАЛИЗ РЕЗУЛЬТАТОВ И ВЫВОДЫ ===" << std::endl;
-    std::cout << std::endl;
-
-    std::cout << "1. ПРОИЗВОДИТЕЛЬНОСТЬ ПО РАЗМЕРУ МАССИВА (n):" << std::endl;
-    std::cout << "   - QuickSort: O(n log n) в среднем, O(n²) в худшем" << std::endl;
-    std::cout << "   - AVLSort: гарантированно O(n log n)" << std::endl;
-    std::cout << "   - QuickSort быстрее на случайных данных" << std::endl;
-    std::cout << "   - AVLSort стабильнее на упорядоченных данных" << std::endl;
-    std::cout << std::endl;
-
-    std::cout << "2. ВЛИЯНИЕ ДИАПАЗОНА ЗНАЧЕНИЙ (w):" << std::endl;
-    std::cout << "   - QuickSort: слабо зависит от диапазона" << std::endl;
-    std::cout << "   - AVLSort: время зависит от балансировки дерева" << std::endl;
-    std::cout << "   - При малом w возможны дубликаты, что влияет на оба алгоритма" << std::endl;
-    std::cout << std::endl;
-
-    std::cout << "3. ВЫВОДЫ И РЕКОМЕНДАЦИИ:" << std::endl;
-    std::cout << "    ИСПОЛЬЗОВАТЬ QUICKSORT КОГДА:" << std::endl;
-    std::cout << "     - Данные случайные или псевдослучайные" << std::endl;
-    std::cout << "     - Требуется максимальная производительность" << std::endl;
-    std::cout << "     - Можно рискнуть худшим случаем O(n²)" << std::endl;
-    std::cout << std::endl;
-
-    std::cout << "    ИСПОЛЬЗОВАТЬ AVLSORT КОГДА:" << std::endl;
-    std::cout << "     - Данные частично или полностью упорядочены" << std::endl;
-    std::cout << "     - Требуется гарантированное время O(n log n)" << std::endl;
-    std::cout << "     - Важна стабильность, а не абсолютная скорость" << std::endl;
-    std::cout << "     - Много дубликатов значений" << std::endl;
-    std::cout << std::endl;
-
-    std::cout << "4. ОБЩИЙ ВЫВОД:" << std::endl;
-    std::cout << "   QuickSort предпочтительнее для общего применения," << std::endl;
-    std::cout << "   AVLSort - для специфических случаев с упорядоченными данными" << std::endl;
-    std::cout << "   или когда важна предсказуемость времени выполнения." << std::endl;
-}
 
 void runExperiments() {
     std::cout << "ЭКСПЕРИМЕНТАЛЬНОЕ СРАВНЕНИЕ АЛГОРИТМОВ СОРТИРОВКИ" << std::endl;
@@ -211,7 +174,6 @@ void runExperiments() {
     experiment3_1();
     experiment3_2();
 
-    // Анализ результатов
-    analyzeResults();
+    
 
 }
